@@ -13,6 +13,8 @@ main{max-width:1500px;margin:0 auto;padding:22px}.intro{background:#fff;border:1
 .panel{background:#fff;border:1px solid var(--line);border-radius:11px;margin-bottom:16px;overflow:hidden}.panel-head{display:flex;align-items:center;justify-content:space-between;padding:13px 15px;border-bottom:1px solid var(--line);background:#fbfcfc}.panel-head h2{font:900 15px Arial Black,Arial;color:var(--dark);margin:0}.generator{padding:14px 15px;display:grid;grid-template-columns:1fr auto;gap:12px}.generator textarea{min-height:94px;border:1px solid #bccbc7;border-radius:8px;padding:10px;font:12px Consolas,monospace;resize:vertical;outline:none}.generator textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(0,153,143,.12)}.generator-actions{display:flex;flex-direction:column;gap:8px;justify-content:center}.filters{display:flex;flex-wrap:wrap;gap:8px;padding:12px 15px}.filter{height:36px;border:1px solid #c7d3d0;border-radius:8px;background:white;padding:0 10px;color:var(--text);min-width:150px}.search{flex:1;min-width:240px}.count{font-size:11px;color:var(--muted)}
 .table-wrap{overflow:auto}.data-table{border-collapse:separate;border-spacing:0;width:100%;min-width:1250px;font-size:11px}.data-table th{position:sticky;top:0;background:var(--dark);color:#fff;text-align:left;padding:10px 9px;font-size:9px;text-transform:uppercase;letter-spacing:.55px;white-space:nowrap}.data-table td{padding:9px;border-bottom:1px solid #e3eae8;vertical-align:top}.data-table tbody tr:nth-child(even){background:#f6faf9}.data-table tbody tr:hover{background:#eaf7f5}.data-table tr.priority-row{background:#fff5d9!important;border-left:4px solid var(--amber)}.mono{font-family:Consolas,monospace;font-weight:700;color:var(--dark)}.feed{font-weight:800;color:var(--dark)}.resp{text-transform:capitalize}.badge{display:inline-flex;align-items:center;border-radius:999px;padding:4px 8px;font-weight:800;font-size:9px;white-space:nowrap}.badge.ok12{background:#d9f3e8;color:#076744}.badge.ok1{background:#fff0c9;color:#8a5a00}.badge.err{background:#fde1e1;color:#9c1d1d}.badge.priority-b{background:#ffe0a1;color:#8b5100;margin-top:4px}.type{display:inline-block;background:#dff3f1;color:#006c65;padding:3px 6px;border-radius:5px;font-weight:bold}.risk{font-size:10px;line-height:1.35;max-width:250px}.auth{max-width:155px}.note{color:#725100;font-weight:bold}.empty{padding:30px;text-align:center;color:var(--muted)}
 .legend-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px 15px}.legend-item{border:1px solid var(--line);border-radius:9px;padding:11px;border-left:4px solid var(--teal)}.legend-item.error{border-left-color:var(--red)}.legend-code{font:bold 12px Consolas;color:var(--dark)}.legend-desc{font-size:11px;line-height:1.4;margin-top:4px;color:#4b5b57}.legend-owner{font-size:9px;margin-top:6px;color:var(--muted);text-transform:uppercase;font-weight:bold}.footer{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);padding:4px 3px 20px}.toast{position:fixed;right:20px;bottom:20px;background:var(--dark);color:#fff;padding:12px 15px;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.2);display:none;z-index:10}
+
+.csv-uploader{padding:16px}.drop-zone{display:block;width:100%;box-sizing:border-box;border:2px dashed #9dbbb5;border-radius:12px;background:#f7fbfa;padding:28px 18px;text-align:center;cursor:pointer;transition:.2s}.drop-zone:hover,.drop-zone.dragover{border-color:var(--teal);background:#eaf7f5;box-shadow:0 0 0 4px rgba(0,153,143,.08)}.drop-zone input{display:none}.drop-icon{font-size:30px;line-height:1}.drop-title{font-weight:900;color:var(--dark);margin-top:8px}.drop-help{font-size:11px;color:var(--muted);margin-top:6px}.file-info{display:none;margin-top:12px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;align-items:center;justify-content:space-between;gap:12px}.file-info.show{display:flex}.file-name{font-weight:700;color:var(--dark);overflow-wrap:anywhere}.file-meta{font-size:10px;color:var(--muted);margin-top:3px}.upload-actions{display:flex;gap:8px;flex-shrink:0}
 @media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.toolbar{position:static;margin-top:15px}.generator{grid-template-columns:1fr}.generator-actions{flex-direction:row}.legend-grid{grid-template-columns:1fr}.header{padding:20px}main{padding:12px}}
 @media print{body{background:white}.header{padding:15px 20px}.toolbar,.generator-panel,.filters,.footer{display:none!important}main{padding:10px}.cards{gap:6px}.card{padding:8px}.card .value{font-size:18px}.panel{break-inside:avoid}.data-table{min-width:0;font-size:7px}.data-table th{font-size:6px;padding:5px}.data-table td{padding:5px}.legend-grid{grid-template-columns:repeat(3,1fr);gap:5px}.legend-item{padding:6px}}
 </style>
@@ -25,7 +27,7 @@ main{max-width:1500px;margin:0 auto;padding:22px}.intro{background:#fff;border:1
 <main>
  <section class="intro"><strong>Prezados(as) supervisores(as) do COI.</strong><br>Abaixo estão relacionados os PIs vinculados aos MICs da programação. Solicitamos a priorização dos itens pendentes de tratativa e o acompanhamento dos projetos em processamento ou com erro até a respectiva publicação.</section>
  <section class="cards"><div class="card"><div class="label">MIC's Totais</div><div class="value" id="mTotal">0</div><div class="sub">PIs apresentados</div></div><div class="card ok"><div class="label">Aplicados</div><div class="value" id="mDone">0</div><div class="sub">OK12, concluídos nos dois sistemas</div></div><div class="card wait"><div class="label">Pendente de tratamento</div><div class="value" id="mWait">0</div><div class="sub">OK1, processamento no G-DIS</div></div></section>
- <section class="panel generator-panel"><div class="panel-head"><h2>Gerar informe a partir da extração</h2><span class="count">Cole a extração completa, incluindo os 13 cabeçalhos</span></div><div class="generator"><textarea id="rawInput" spellcheck="false" placeholder="Cole aqui o conteúdo completo iniciado por DH_INICIO, ALIMENTADOR_LINHA, MIC..."></textarea><div class="generator-actions"><button class="btn btn-primary" onclick="processInput()">Gerar informe</button><button class="btn" onclick="clearInput()">Limpar campo</button></div></div></section>
+ <section class="panel generator-panel"><div class="panel-head"><h2>Carregar extração em arquivo CSV</h2><span class="count">O arquivo será lido localmente no navegador</span></div><div class="csv-uploader"><label class="drop-zone" id="dropZone" for="csvFile"><input id="csvFile" type="file" accept=".csv,text/csv,text/plain"><div class="drop-icon">📄</div><div class="drop-title">Clique para selecionar ou arraste o arquivo CSV aqui</div><div class="drop-help">Aceita CSV separado por ponto e vírgula, vírgula ou tabulação, com campos entre aspas.</div></label><div class="file-info" id="fileInfo"><div><div class="file-name" id="fileName"></div><div class="file-meta" id="fileMeta"></div></div><div class="upload-actions"><button class="btn btn-primary" id="readCsvBtn" onclick="processSelectedFile()">Ler arquivo CSV</button><button class="btn" onclick="clearSelectedFile()">Remover</button></div></div></div></section>
  <section class="panel"><div class="panel-head"><h2>Visão operacional dos projetos</h2><span class="count" id="resultCount"></span></div><div class="filters"><input class="filter search" id="search" placeholder="Pesquisar MIC, PI, alimentador ou responsável" oninput="render()"><select class="filter" id="statusFilter" onchange="render()"><option value="">Todos os status</option></select><select class="filter" id="areaFilter" onchange="render()"><option value="">Todas as áreas</option></select><select class="filter" id="conditionFilter" onchange="render()"><option value="">Todas as condições</option><option value="interrupcao">Com interrupção de carga</option><option value="linha viva">Com linha viva</option><option value="sem impedimento">Sem impedimento</option><option value="sem interrupcao">Sem interrupção de carga</option></select></div><div class="table-wrap"><table class="data-table"><thead><tr><th>MIC</th><th>Início</th><th>Alimentador / Local</th><th>PI</th><th>Autorização</th><th>Origem / Serviço</th><th>Tipo de trabalho</th><th>Área</th><th>Responsável</th><th>Situação</th></tr></thead><tbody id="tbody"></tbody></table></div></section>
  <section class="panel"><div class="panel-head"><h2>Legenda das situações</h2><span class="count">Significados revisados para leitura rápida, sem alteração do contexto técnico</span></div><div class="legend-grid" id="legend"></div></section>
  <div class="footer"><span>Informe destinado ao Centro de Operações Integrado (COI)</span><span>Atualizado em <span id="updated"></span></span></div>
@@ -129,6 +131,76 @@ function parseDetailed(raw){
  }
  return {records:out,warnings,headerFound,format:'anterior'};
 }
+
+function detectDelimiter(text){
+ const first=(text.replace(/^\uFEFF/,'').split(/\r?\n/).find(l=>l.trim())||'');
+ const candidates=[';',',','\t']; let best=';',bestCount=-1;
+ candidates.forEach(d=>{let count=0,quoted=false;for(let i=0;i<first.length;i++){if(first[i]==='"'){if(quoted&&first[i+1]==='"')i++;else quoted=!quoted}else if(!quoted&&first[i]===d)count++}if(count>bestCount){bestCount=count;best=d}});
+ return best;
+}
+function parseCsvRows(text,delimiter){
+ text=String(text||'').replace(/^\uFEFF/,'');
+ const rows=[],row=[];let field='',quoted=false;
+ for(let i=0;i<text.length;i++){
+  const ch=text[i];
+  if(quoted){if(ch==='"'){if(text[i+1]==='"'){field+='"';i++}else quoted=false}else field+=ch}
+  else if(ch==='"')quoted=true;
+  else if(ch===delimiter){row.push(field);field=''}
+  else if(ch==='\n'){row.push(field);rows.push(row.splice(0));field=''}
+  else if(ch!=='\r')field+=ch;
+ }
+ if(field.length||row.length){row.push(field);rows.push(row)}
+ return rows.filter(r=>r.some(v=>clean(v)));
+}
+function parseCsvDetailed(text){
+ const delimiter=detectDelimiter(text),rows=parseCsvRows(text,delimiter);
+ if(!rows.length)return {records:[],warnings:['Arquivo CSV vazio.'],headerFound:false,format:'CSV'};
+ const aliases={
+  start:['DH_INICIO'],feed:['ALIMENTADOR_LINHA'],mic:['MIC'],pi:['PI'],numManob:['NUM_MANOB'],auth:['STATUS'],origin:['ORG_RESP_SERV'],work:['TIPO_TRABALHO'],manobra:['MANOBRA'],area:['MALHA'],resp:['NOME_RESP_SERV'],note:['01 - GDIS-PRJ ISOLADO.justificativa'],status:['01 - SmallWorld.COD_STATUS']
+ };
+ const headers=rows[0].map(normalize),index={};
+ Object.entries(aliases).forEach(([key,names])=>{index[key]=headers.findIndex(h=>names.some(n=>h===normalize(n))) });
+ const required=['start','feed','mic','pi','auth','origin','work','area','resp','status'];
+ const missing=required.filter(k=>index[k]<0);
+ if(missing.length)return {records:[],warnings:['Colunas obrigatórias não encontradas: '+missing.join(', ')],headerFound:false,format:'CSV'};
+ const out=[],warnings=[];
+ const get=(row,key)=>index[key]>=0?clean(row[index[key]]):'';
+ rows.slice(1).forEach((row,pos)=>{
+  if(!row.some(v=>clean(v)))return;
+  const mic=get(row,'mic'),status=get(row,'status').toUpperCase(),start=get(row,'start');
+  if(!mic){warnings.push(`Linha ${pos+2}: MIC vazio`);return}
+  if(!/^(OK\d+|ERR\d+)$/i.test(status)){warnings.push(`Linha ${pos+2} / MIC ${mic}: status OK/ERR inválido`);return}
+  const note=get(row,'note');
+  out.push({mic,start,feed:get(row,'feed'),pi:get(row,'pi'),auth:get(row,'auth'),origin:get(row,'origin'),work:get(row,'work'),area:get(row,'area'),resp:get(row,'resp'),note,status,numManob:get(row,'numManob'),manobra:get(row,'manobra'),priority:normalize(note).includes('priorizar')});
+ });
+ return {records:out,warnings,headerFound:true,format:`CSV (${delimiter==='\t'?'tabulação':delimiter})`};
+}
+let selectedCsvFile=null;
+function formatBytes(bytes){if(bytes<1024)return bytes+' B';if(bytes<1048576)return (bytes/1024).toFixed(1)+' KB';return (bytes/1048576).toFixed(1)+' MB'}
+function selectCsvFile(file){
+ if(!file)return;
+ if(!/\.csv$/i.test(file.name)&&!['text/csv','text/plain','application/vnd.ms-excel'].includes(file.type))return toast('Selecione um arquivo no formato CSV.');
+ selectedCsvFile=file;document.getElementById('fileName').textContent=file.name;document.getElementById('fileMeta').textContent=`${formatBytes(file.size)} | Última alteração: ${new Date(file.lastModified).toLocaleString('pt-BR')}`;document.getElementById('fileInfo').classList.add('show');
+}
+async function processSelectedFile(){
+ if(!selectedCsvFile)return toast('Selecione um arquivo CSV antes de continuar.');
+ const btn=document.getElementById('readCsvBtn');btn.disabled=true;btn.textContent='Lendo arquivo...';
+ try{
+  const raw=await selectedCsvFile.text();const result=parseCsvDetailed(raw);
+  if(!result.records.length){console.warn(result.warnings);return toast(result.warnings[0]||'Nenhum registro válido foi encontrado no CSV.')}
+  records=result.records;populateFilters();render();document.getElementById('updated').textContent=new Date().toLocaleString('pt-BR');
+  const extra=result.warnings.length?` ${result.warnings.length} linha(s) exigem revisão.`:'';toast(`${records.length} registro(s) lido(s) do CSV com sucesso.${extra}`);document.querySelector('.panel:nth-of-type(2)').scrollIntoView({behavior:'smooth',block:'start'});
+ }catch(e){console.error(e);toast('Não foi possível ler o CSV. Verifique se o arquivo não está corrompido.')}finally{btn.disabled=false;btn.textContent='Ler arquivo CSV'}
+}
+function clearSelectedFile(){selectedCsvFile=null;const input=document.getElementById('csvFile');input.value='';document.getElementById('fileInfo').classList.remove('show')}
+function configureCsvUpload(){
+ const input=document.getElementById('csvFile'),zone=document.getElementById('dropZone');
+ input.addEventListener('change',e=>selectCsvFile(e.target.files[0]));
+ ['dragenter','dragover'].forEach(type=>zone.addEventListener(type,e=>{e.preventDefault();zone.classList.add('dragover')}));
+ ['dragleave','drop'].forEach(type=>zone.addEventListener(type,e=>{e.preventDefault();zone.classList.remove('dragover')}));
+ zone.addEventListener('drop',e=>selectCsvFile(e.dataTransfer.files[0]));
+}
+
 function parse(raw){return parseDetailed(raw).records}
 function escapeHtml(s){return String(s||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 function statusText(code){const x=situations.find(s=>s.code===code);return x?x.desc:'Situação não identificada na legenda disponível.'}
@@ -140,23 +212,13 @@ function populateFilters(){
 function render(){
  const q=normalize(document.getElementById('search').value),st=document.getElementById('statusFilter').value,ar=document.getElementById('areaFilter').value,co=document.getElementById('conditionFilter').value;
  const filtered=records.filter(r=>(!q||normalize(Object.values(r).join(' ')).includes(q))&&(!st||r.status===st)&&(!ar||r.area===ar)&&(!co||normalize(r.work).includes(co)));
- document.getElementById('tbody').innerHTML=filtered.length?filtered.map(r=>`<tr class="${r.priority?'priority-row':''}"><td class="mono">${escapeHtml(r.mic)}</td><td class="mono" style="white-space:nowrap">${escapeHtml(r.start)}</td><td class="feed">${escapeHtml(r.feed)}</td><td class="mono">${escapeHtml(r.pi)}</td><td class="auth">${escapeHtml(r.auth)}</td><td><span class="type">${escapeHtml(r.origin)}</span></td><td class="risk">${escapeHtml(r.work)}</td><td><strong>${escapeHtml(r.area)}</strong></td><td class="resp">${escapeHtml(r.resp)}</td><td><span class="badge ${r.status.toLowerCase().startsWith('err')?'err':r.status.toLowerCase()}">${escapeHtml(r.status)}</span><div style="font-size:9px;margin-top:4px;max-width:210px">${escapeHtml(statusText(r.status))}</div></td></tr>`).join(''):'<tr><td colspan="10" class="empty">Nenhuma informação carregada. Cole a extração acima e clique em Gerar informe.</td></tr>';
+ document.getElementById('tbody').innerHTML=filtered.length?filtered.map(r=>`<tr class="${r.priority?'priority-row':''}"><td class="mono">${escapeHtml(r.mic)}</td><td class="mono" style="white-space:nowrap">${escapeHtml(r.start)}</td><td class="feed">${escapeHtml(r.feed)}</td><td class="mono">${escapeHtml(r.pi)}</td><td class="auth">${escapeHtml(r.auth)}</td><td><span class="type">${escapeHtml(r.origin)}</span></td><td class="risk">${escapeHtml(r.work)}</td><td><strong>${escapeHtml(r.area)}</strong></td><td class="resp">${escapeHtml(r.resp)}</td><td><span class="badge ${r.status.toLowerCase().startsWith('err')?'err':r.status.toLowerCase()}">${escapeHtml(r.status)}</span><div style="font-size:9px;margin-top:4px;max-width:210px">${escapeHtml(statusText(r.status))}</div></td></tr>`).join(''):'<tr><td colspan="10" class="empty">Nenhuma informação carregada. Selecione um arquivo CSV acima e clique em Ler arquivo CSV.</td></tr>';
  document.getElementById('resultCount').textContent=`${filtered.length} de ${records.length} registro(s)`;
  updateMetrics();
 }
 function updateMetrics(){document.getElementById('mTotal').textContent=records.length;document.getElementById('mDone').textContent=records.filter(r=>r.status==='OK12').length;document.getElementById('mWait').textContent=records.filter(r=>r.status==='OK1').length}
-function processInput(){
- const raw=document.getElementById('rawInput').value;
- if(!raw.trim()) return toast('Cole as informações antes de gerar o informe.');
- const result=parseDetailed(raw);
- if(!result.records.length) return toast('Nenhum registro válido foi identificado. Verifique o cabeçalho, o MIC e a data/hora.');
- records=result.records;populateFilters();render();
- document.getElementById('updated').textContent=new Date().toLocaleString('pt-BR');
- const extra=result.warnings.length?` ${result.warnings.length} bloco(s) exigem revisão.`:'';
- toast(`${records.length} registro(s) processado(s) com sucesso.${extra}`);
- document.querySelector('.panel:nth-of-type(2)').scrollIntoView({behavior:'smooth',block:'start'});
-}
-function clearInput(){document.getElementById('rawInput').value=''}
+
+
 function toast(t){const e=document.getElementById('toast');e.textContent=t;e.style.display='block';setTimeout(()=>e.style.display='none',2600)}
 function wrapText(text,max){
  const words=String(text||'').split(/\s+/),lines=[];let line='';
@@ -217,5 +279,5 @@ function copyEmail(){
  navigator.clipboard.writeText(text).then(()=>toast('Informe copiado para a área de transferência.')).catch(()=>toast('Não foi possível copiar automaticamente.'));
 }
 document.getElementById('legend').innerHTML=situations.map(s=>`<div class="legend-item ${s.error?'error':''}"><div class="legend-code">${s.code}</div><div class="legend-desc">${s.desc}</div><div class="legend-owner">Direcionamento: ${s.owner}</div></div>`).join('');
-document.getElementById('rawInput').value='';records=[];populateFilters();render();document.getElementById('updated').textContent=new Date().toLocaleString('pt-BR');
+records=[];configureCsvUpload();populateFilters();render();document.getElementById('updated').textContent=new Date().toLocaleString('pt-BR');
 </script></body></html>
